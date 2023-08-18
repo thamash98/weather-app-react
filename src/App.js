@@ -18,7 +18,7 @@ function App() {
              <h3>Cloudy</h3>
             </div>
             <div className="temperature"></div>
-            <h3>34 °C</h3>
+            <h1>34 °C</h1>
           </div>   
         </div>
         {/* bottom description */}
