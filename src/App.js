@@ -17,8 +17,11 @@ function App() {
              <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="weatherIcon" />
              <h3>Cloudy</h3>
             </div>
+            <div className="temperature"></div>
+            <h3>34 °C</h3>
           </div>   
         </div>
+        {/* bottom description */}
       </div>
     </div>
   );
