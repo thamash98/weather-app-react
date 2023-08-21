@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import summer from './assets/summer.jpg';
 import winter from './assets/winter.jpg';
 import LocationInfo from "./components/LocationInfo";
+import { formattedWeatherData } from "./WeatherService";
 
 function App() {
+
+  useEffect(() => {
+    const data = await formattedWeatherData{'paris'}
+  },[])
+
+
+
+
   return (
     <div className="app" style={{backgroundImage:`url(${summer})`}}> 
       <div className="overlay">
