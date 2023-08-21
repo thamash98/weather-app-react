@@ -1,6 +1,7 @@
 import React from "react";
 import summer from './assets/summer.jpg';
 import winter from './assets/winter.jpg';
+import LocationInfo from "./components/LocationInfo";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
             <div className="temperature"></div>
             <h1>34 °C</h1>
           </div>   
-        </div>
-        {/* bottom description */}
+          {/* bottom description */}
+          <LocationInfo/>
+        </div>  
       </div>
     </div>
   );
