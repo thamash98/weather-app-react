@@ -14,3 +14,13 @@
     padding: 1rem;
     border-radius: 0.4rem;
 }
+
+.location-info__card-icon{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 12px;
+}
