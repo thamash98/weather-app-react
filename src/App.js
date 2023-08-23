@@ -7,7 +7,10 @@ import { formattedWeatherData } from "./WeatherService";
 function App() {
 
   useEffect(() => {
-    const data = await formattedWeatherData{'paris'}
+    const fetchWeatherData = async () => {
+      const data = await formattedWeatherData('paris');
+    }
+    fetchWeatherData();
   },[])
 
 
