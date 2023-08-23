@@ -9,6 +9,7 @@ function App() {
   useEffect(() => {
     const fetchWeatherData = async () => {
       const data = await formattedWeatherData('paris');
+      console.log(data);
     }
     fetchWeatherData();
   },[])
