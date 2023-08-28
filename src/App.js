@@ -9,11 +9,17 @@ function App() {
   const [city, setCity] = useState("Matara");
   const [weather, setWeather] = useState(null);
   const [units, setUnits] = useState("metric");
+  const [backGround, setBg] = useState(summer);
 
   useEffect(() => {
     const fetchWeatherData = async () => {
       const data = await formattedWeatherData(city, units);
       setWeather(data);
+
+      //set background dynamic
+      const threshold = units === "metric" ? 20 : 60;
+      if (data.temp <= threshold) setBg(winter);
+      else setBg(summer);
     };
     fetchWeatherData();
   },[units,city]);
@@ -35,7 +41,7 @@ function App() {
   };
 
   return (
-    <div className="app" style={{backgroundImage:`url(${summer})`}}> 
+    <div className="app" style={{backgroundImage:`url(${backGround})`}}> 
       <div className="overlay">
         {
           weather && (
