@@ -6,16 +6,33 @@ import { formattedWeatherData } from "./WeatherService";
 
 function App() {
 
+  const [city, setCity] = useState("Matara");
   const [weather, setWeather] = useState(null);
   const [units, setUnits] = useState("metric");
 
   useEffect(() => {
     const fetchWeatherData = async () => {
-      const data = await formattedWeatherData("paris", units);
+      const data = await formattedWeatherData(city, units);
       setWeather(data);
     };
     fetchWeatherData();
-  },[]);
+  },[units,city]);
+  
+  const handleUnitsClick = (e) => {
+    const button = e.currentTarget;
+    const currentUnit = button.innerText.slice(1);
+
+    const isCelsius = currentUnit === "C";
+    button.innerText = isCelsius ? "°F" : "°C";
+    setUnits(isCelsius ? "metric" : "imperial");
+  };
+
+  const enterKeyPressed = (e) => {
+    if (e.keyCode === 13) {
+      setCity(e.currentTarget.value);
+      //e.currentTarget.blur();
+    }
+  };
 
   return (
     <div className="app" style={{backgroundImage:`url(${summer})`}}> 
@@ -24,8 +41,8 @@ function App() {
           weather && (
             <div className="container">
           <div className="section section__inputs">
-            <input type="text" name="city" placeholder="Enter City..." />
-            <button>°F</button>
+            <input onKeyDown={enterKeyPressed} type="text" name="city" placeholder="Enter City..." />
+            <button onClick={(e) => handleUnitsClick(e)}>°F</button>
           </div>
           <div className="section section__temperature">
             <div className="icon">
