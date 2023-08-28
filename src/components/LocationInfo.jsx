@@ -1,14 +1,14 @@
 import React from 'react';
 import './LocationInfo.css';
-import {FaArrowDown} from "react-icons/fa";
+import { FaArrowUp, FaArrowDown, FaWind } from "react-icons/fa";
 import { BiHappy } from "react-icons/bi";
 import { MdCompress, MdOutlineWaterDrop } from "react-icons/md";
 
 
-const LocationInfo = () => {
+const LocationInfo = ({weather, units}) => {
 
-  const tempUnit = units === "metric" ? "°C" : "°F";
-  const windUnit = units === "metric" ? "m/s" : "m/h";
+  const tempUnit = units === "metric" ? "°C" : "°F"
+  const windUnit = units === "metric" ? "m/s" : "m/h"
 
   const cards = [
     {
@@ -57,43 +57,17 @@ const LocationInfo = () => {
 
   return (
     <div className="section section__location-info">
-        <div className="card">
-            <div className="location-info__card-icon">
-              <FaArrowDown/>
-              <small>min</small>
-            </div>
-            <h2>32 °C</h2>
+      {cards.map(({id, icon,title, data, unit}) => (
+        <div key={id} className="card">
+          <div className="location-info__card-icon">
+            {icon}
+            <small>{title}</small>
+          </div>
+          <h2>{`${data} ${unit}`}</h2>
         </div>
-        <div className="card">
-            <div className="location-info__card-icon">
-              <FaArrowDown/>
-              <small>min</small>
-            </div>
-            <h2>32 °C</h2>
-        </div>
-        <div className="card">
-            <div className="location-info__card-icon">
-              <FaArrowDown/>
-              <small>min</small>
-            </div>
-            <h2>32 °C</h2>
-        </div>
-        <div className="card">
-            <div className="location-info__card-icon">
-              <FaArrowDown/>
-              <small>min</small>
-            </div>
-            <h2>32 °C</h2>
-        </div>
-        <div className="card">
-            <div className="location-info__card-icon">
-              <FaArrowDown/>
-              <small>min</small>
-            </div>
-            <h2>32 °C</h2>
-        </div>
+      )) }     
     </div>
-  )
+  );
 };
 
 export default LocationInfo;
